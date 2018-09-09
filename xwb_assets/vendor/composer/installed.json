@@ -1,0 +1,173 @@
+[
+    {
+        "name": "components/font-awesome",
+        "version": "4.7.0",
+        "version_normalized": "4.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/components/font-awesome.git",
+            "reference": "885308b939369d147bec93174722786bc2c4eedd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/components/font-awesome/zipball/885308b939369d147bec93174722786bc2c4eedd",
+            "reference": "885308b939369d147bec93174722786bc2c4eedd",
+            "shasum": ""
+        },
+        "time": "2016-10-25T10:56:23+00:00",
+        "type": "component",
+        "extra": {
+            "component": {
+                "styles": [
+                    "css/font-awesome.css"
+                ],
+                "files": [
+                    "css/font-awesome.min.css",
+                    "css/font-awesome.css.map",
+                    "fonts/*"
+                ]
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT",
+            "OFL-1.1"
+        ],
+        "description": "The iconic font designed for use with Twitter Bootstrap."
+    },
+    {
+        "name": "emojione/assets",
+        "version": "3.1.2",
+        "version_normalized": "3.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/emojione/emojione-assets.git",
+            "reference": "aed6c9f01922db9d75e9639e8d893ac54e48f3aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/emojione/emojione-assets/zipball/aed6c9f01922db9d75e9639e8d893ac54e48f3aa",
+            "reference": "aed6c9f01922db9d75e9639e8d893ac54e48f3aa",
+            "shasum": ""
+        },
+        "suggest": {
+            "emojione/emojione": "A set of libraries to make using emoji on your websites easier."
+        },
+        "time": "2017-08-08T15:44:16+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "proprietary"
+        ],
+        "description": "Emojis in png format brought to you by EmojiOne. EmojiOne is a complete set of emojis designed for the web.",
+        "homepage": "https://www.emojione.com",
+        "keywords": [
+            "emoji",
+            "emojione",
+            "emojis",
+            "emoticons",
+            "smileys",
+            "smilies",
+            "unicode"
+        ]
+    },
+    {
+        "name": "mervick/emojionearea",
+        "version": "v3.4.1",
+        "version_normalized": "3.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mervick/emojionearea.git",
+            "reference": "dc73dc556fdc6e82c5d26847533b893ece255ce1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mervick/emojionearea/zipball/dc73dc556fdc6e82c5d26847533b893ece255ce1",
+            "reference": "dc73dc556fdc6e82c5d26847533b893ece255ce1",
+            "shasum": ""
+        },
+        "time": "2018-02-09T22:44:43+00:00",
+        "type": "plugin",
+        "extra": {
+            "asset-installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Andrey Izman",
+                "email": "izmanw@gmail.com"
+            },
+            {
+                "name": "Klas Lundberg",
+                "email": "klas.lundberg@instinct.se"
+            },
+            {
+                "name": "Merlin Mason",
+                "email": "info@merlinmason.co.uk"
+            }
+        ],
+        "description": "WYSIWYG-like EmojiOne Converter / Picker Plugin for jQuery"
+    },
+    {
+        "name": "twbs/bootstrap",
+        "version": "v3.3.7",
+        "version_normalized": "3.3.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twbs/bootstrap.git",
+            "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+            "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+            "shasum": ""
+        },
+        "replace": {
+            "twitter/bootstrap": "self.version"
+        },
+        "time": "2016-07-25T15:51:55+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.3.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jacob Thornton",
+                "email": "jacobthornton@gmail.com"
+            },
+            {
+                "name": "Mark Otto",
+                "email": "markdotto@gmail.com"
+            }
+        ],
+        "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+        "homepage": "http://getbootstrap.com",
+        "keywords": [
+            "JS",
+            "css",
+            "framework",
+            "front-end",
+            "less",
+            "mobile-first",
+            "responsive",
+            "web"
+        ]
+    }
+]
