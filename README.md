@@ -22,4 +22,7 @@
 3) run => bower install
 4) run => gulp build
 5) run => gulp serve
-
+6) The site will run on url => http://localhost:3000/#/authSignIn
+7) Super admin details
+    username: super_admin
+    password: super
