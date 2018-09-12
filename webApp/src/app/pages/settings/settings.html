@@ -1,0 +1,15 @@
+<div class="panel horizontal-tabs">
+  <ul class="nav nav-tabs">
+    <li ng-class="{'active':tab=='groups'}"><a href="" ng-click="selectTab('groups')">Groups</a></li>
+    <li ng-class="{'active':tab=='channels'}"><a href="" ng-click="selectTab('channels')">Channels</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="groups" class="tab-pane fade" ng-class="{'in active':tab=='groups'}" ng-show="tab=='groups'">
+        <groups></groups>
+    </div>
+    <div id="channels" class="tab-pane fade" ng-class="{'in active':tab=='channels'}" ng-show="tab=='channels'">
+        <channels></channels>
+    </div>
+  </div>
+</div>

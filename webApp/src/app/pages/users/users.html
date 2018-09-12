@@ -1,0 +1,19 @@
+<div class="panel horizontal-tabs">
+  <ul class="nav nav-tabs">
+    <li permission permission-only = "['super_admin']" ng-class="{'active':tab=='SA'}"><a href="" ng-click="selectTab('SA')">Super Admin</a></li>
+    <li ng-class="{'active':tab=='GA'}"><a href="" ng-click="selectTab('GA')">Group Admin</a></li>
+    <li ng-class="{'active':tab=='users'}"><a href="" ng-click="selectTab('users')">Users</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div permission permission-only = "['super_admin']"  id="SA" class="tab-pane fade" ng-class="{'in active':tab=='SA'}" ng-if="tab=='SA'">
+      <users-list users="users" row-list="rowList" tab="SA"></users-list>
+    </div>
+    <div id="GA" class="tab-pane fade" ng-class="{'in active':tab=='GA'}" ng-if="tab=='GA'">
+      <users-list users="users" row-list="rowList" tab="GA"></users-list>
+    </div>
+    <div id="users" class="tab-pane fade" ng-class="{'in active':tab=='users'}" ng-if="tab=='users'">
+      <users-list users="users" row-list="rowList" tab="users"></users-list>
+    </div>
+  </div>
+</div>

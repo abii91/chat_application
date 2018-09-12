@@ -1,0 +1,288 @@
+{
+  "data": {
+    "roles": [
+      {
+        "id": 1,
+        "role_name": "super_admin"
+      },
+      {
+        "id": 2,
+        "role_name": "group_admin"
+      },
+      {
+        "id": 3,
+        "role_name": "users"
+      }
+    ],
+    "users": [
+      {
+        "first_name": "super",
+        "last_name": "admin",
+        "user_name": "super_admin",
+        "password": "$argon2i$v=19$m=4096,t=3,p=1$q55JXJQhfdHtZv+Gt06S/A$1A/bR1QRaCOlQU/5ASMTRmzvsU/CMezvHXa0kTQJlhY",
+        "email": "admin@gmail.com",
+        "activated": true,
+        "role_id": 1,
+        "createdAt": "2018-09-11T20:07:18.269Z",
+        "updatedAt": "2018-09-11T20:21:34.290Z",
+        "id": 1
+      },
+      {
+        "first_name": "group",
+        "last_name": "admin",
+        "user_name": "ga",
+        "password": "$argon2i$v=19$m=4096,t=3,p=1$y8638wfNRUSAO6QSHUv/ow$poU5TrlWM+1k1AY6pA15GXVaBEAfkkRhEcgnGa3f9/c",
+        "email": "ga@yahoo.com",
+        "activated": true,
+        "role_id": 2,
+        "createdAt": "2018-09-11T20:15:41.995Z",
+        "updatedAt": "2018-09-12T11:38:00.859Z",
+        "id": 2
+      },
+      {
+        "first_name": "ibtesam",
+        "last_name": "latif",
+        "user_name": "sam",
+        "password": "$argon2i$v=19$m=4096,t=3,p=1$Rt0p84LHeWbZkoWoSUN0AA$lIMigRyorIvGx+H+XbLrDFV15igyMAwY07kT0G8hG34",
+        "email": "ibtesamlatif1@gmail.com",
+        "activated": true,
+        "role_id": 3,
+        "createdAt": "2018-09-11T20:16:48.198Z",
+        "updatedAt": "2018-09-12T11:38:41.686Z",
+        "id": 3
+      },
+      {
+        "first_name": "test",
+        "last_name": "test",
+        "user_name": "test",
+        "password": "$argon2i$v=19$m=4096,t=3,p=1$kmN1+vrKXD1FpLfdF/7jzg$2YATwAbJKP2O5S0Hh8w/s5CY4BlCP9v6waObigsmKN8",
+        "email": "test@gmail.com",
+        "activated": true,
+        "role_id": 3,
+        "createdAt": "2018-09-12T13:04:07.725Z",
+        "updatedAt": "2018-09-12T13:04:07.725Z",
+        "id": 5
+      }
+    ],
+    "channels": [
+      {
+        "name": "channel 1",
+        "group_id": 2,
+        "createdAt": "2018-09-12T10:08:37.465Z",
+        "updatedAt": "2018-09-12T10:58:33.557Z",
+        "id": 4
+      },
+      {
+        "name": "channel 2",
+        "group_id": 2,
+        "createdAt": "2018-09-12T10:22:39.923Z",
+        "updatedAt": "2018-09-12T10:58:33.557Z",
+        "id": 5
+      },
+      {
+        "name": "channel 3",
+        "group_id": 1,
+        "createdAt": "2018-09-12T10:22:46.259Z",
+        "updatedAt": "2018-09-12T10:23:19.140Z",
+        "id": 6
+      },
+      {
+        "name": "channel 4",
+        "group_id": 2,
+        "createdAt": "2018-09-12T10:22:53.024Z",
+        "updatedAt": "2018-09-12T10:23:28.291Z",
+        "id": 7
+      },
+      {
+        "name": "channel 5",
+        "group_id": 1,
+        "createdAt": "2018-09-12T10:32:54.664Z",
+        "updatedAt": "2018-09-12T10:58:17.003Z",
+        "id": 10
+      }
+    ],
+    "groups": [
+      {
+        "name": "test1",
+        "createdAt": "2018-09-12T09:21:52.803Z",
+        "updatedAt": "2018-09-12T09:21:52.803Z",
+        "id": 1
+      },
+      {
+        "name": "test2",
+        "createdAt": "2018-09-12T09:22:04.307Z",
+        "updatedAt": "2018-09-12T09:22:04.307Z",
+        "id": 2
+      }
+    ],
+    "channelusers": [
+      {
+        "user_id": 3,
+        "channel": 7,
+        "createdAt": "2018-09-12T13:16:00.957Z",
+        "updatedAt": "2018-09-12T13:16:00.957Z",
+        "id": 3
+      },
+      {
+        "user_id": 5,
+        "channel": 7,
+        "createdAt": "2018-09-12T13:16:00.962Z",
+        "updatedAt": "2018-09-12T13:16:00.962Z",
+        "id": 4
+      },
+      {
+        "user_id": 3,
+        "channel": 6,
+        "createdAt": "2018-09-12T13:16:10.501Z",
+        "updatedAt": "2018-09-12T13:16:10.501Z",
+        "id": 5
+      }
+    ]
+  },
+  "schema": {
+    "roles": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "role_name": {
+        "type": "string",
+        "size": 255
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "users": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "first_name": {
+        "type": "string",
+        "size": 255
+      },
+      "last_name": {
+        "type": "string",
+        "size": 255
+      },
+      "user_name": {
+        "type": "string",
+        "size": 255,
+        "unique": true
+      },
+      "email": {
+        "type": "string",
+        "size": 255
+      },
+      "password": {
+        "type": "text"
+      },
+      "activated": {
+        "type": "boolean"
+      },
+      "role_id": {
+        "type": "integer",
+        "model": "roles",
+        "foreignKey": true,
+        "alias": "role_id"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "channels": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "name": {
+        "type": "string",
+        "size": 255
+      },
+      "group_id": {
+        "type": "integer",
+        "model": "groups",
+        "foreignKey": true,
+        "alias": "group_id"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "groups": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "name": {
+        "type": "string",
+        "size": 255
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "channelusers": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "channel": {
+        "type": "integer",
+        "model": "channels",
+        "foreignKey": true,
+        "alias": "channel"
+      },
+      "user_id": {
+        "type": "integer",
+        "model": "users",
+        "foreignKey": true,
+        "alias": "user_id"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "roles": {},
+    "users": {
+      "id": 5
+    },
+    "channels": {
+      "id": 10
+    },
+    "groups": {
+      "id": 5
+    },
+    "channelusers": {
+      "id": 5
+    }
+  }
+}

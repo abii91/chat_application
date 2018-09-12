@@ -1,21 +1,29 @@
-# Introduction
+# chat_application
 
-This is a chat application made using technologies like Code Igniter, Node, Socket and MySQL.
+## Required Tools for Development
 
-## How to run Project Locally
+ * [NPM](https://www.npmjs.com/) for managing Grunt and other dependencies
+ * [Gulp](https://gulpjs.com/) for automating minification, compilation, unit testing, linting, etc
+ * [Bower](http://bower.io/) for managing AngularJS dependencies
+ * [Sails](http://sailsjs.com/) for MySQL object-relational database management
+<br />
 
-1. Import `database.sql` as a project Database
 
-2. Setup database hostname, username, password and database in `application/config/database.php`
+## Running server
 
-3. Clone the project using `git clone https://github.com/abii91/chat_application.git`
+1) cd server
+2) run => npm install
+3) run => node app.js
 
-5. Install/Update composer dependencies in `application/libraries/Chatsocket/`
+## Running web app
 
-6. Install Node dependencies in `application/libraries/Chatsocket/`
+1) cd webApp
+2) run => npm install
+3) run => bower install
+4) run => gulp build
+5) run => gulp serve
+6) The site will run on url => http://localhost:3000/#/authSignIn
+7) Super admin details
 
-7. Install/Update composer dependencies in `xwb_assets/`
-
-8. Run Node Script `application/libraries/Chatsocket/server.js`
-
-Make sure MySQL and Apache servers are running using Mamp, Wamp or Xampp etc.
+    username: super_admin
+    password: super
