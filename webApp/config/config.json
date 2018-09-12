@@ -1,0 +1,12 @@
+{
+  "local": {
+    "config":{
+      "baseUrl": "http://localhost:1337"
+    }
+  },
+  "production": {
+    "config": {
+      "baseUrl": "http://localhost:1337"
+    }
+  }
+}

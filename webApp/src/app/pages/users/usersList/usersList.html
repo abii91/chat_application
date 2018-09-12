@@ -1,0 +1,124 @@
+<div class="row" ng-controller="usersListCtrl as usersListVm">
+  <div class="col-lg-6 col-md-12 col-sm-12">
+    <div class="add-row-editable-table">
+      <button class="btn btn-primary btn-with-icon" ng-click="usersListVm.addUser()" ng-hide="usersListVm.tab =='customers'"><i class="ion-plus"></i>Add user</button>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 text-right">
+    <label class="rows-on-page"><span>Results on page</span>
+      <select class="form-control show-tick" title="Results on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped table-condensed custom-table" st-table="users" st-safe-src="rowList">
+        <thead>
+          <tr class="sortable">
+            <th></th>
+            <th st-sort="first_name">First name</th>
+            <th st-sort="last_name">Last name</th>
+            <th st-sort="user_name">Username</th>
+            <th st-sort="password">Password</th>
+            <th st-sort="email">Email</th>
+            <th st-sort="activated">Activated</th>
+            <th st-sort="role_id.role_name">Role</th>
+            <th ></th>
+          </tr>
+          <tr>
+            <th>
+            </th>
+            <th><input st-search="first_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="last_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="user_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="password" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="email" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="activated" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+            <th>
+              <input st-search="role_id.role_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users" class="editable-row">
+            <td>
+                <span>
+                  {{ $index + 1 }}
+                </span>
+            </td>
+            <td>
+                <span editable-text="user.first_name" e-name="first_name" e-form="rowform">
+                  {{ user.first_name }}
+                </span>
+            </td>
+            <td>
+                <span editable-text="user.last_name" e-name="last_name" e-form="rowform">
+                  {{ user.last_name }}
+                </span>
+            </td>
+            <td>
+                <span editable-text="user.user_name" e-name="user_name" e-form="rowform">
+                  {{ user.user_name }}
+                </span>
+            </td>
+            <td>
+                <span editable-text="user.password" e-name="password" e-form="rowform">
+                    **********
+                </span>
+            </td>
+            <td>
+                <span editable-text="user.email" e-name="email" e-form="rowform">
+                  {{ user.email }}
+                </span>
+            </td>
+            <td class="select-td">
+                <span editable-select="user.activated" e-name="activated" e-form="rowform" e-selectpicker
+                      e-ng-options="boolean.value as boolean.text for boolean in usersListVm.booleans">
+                  {{ usersListVm.showBoolean(user.activated) }}
+                </span>
+            </td>
+            <td class="select-td">
+                <span editable-select="user.role_id.id" e-name="role_id" e-form="rowform" e-selectpicker
+                      e-ng-options="role.id as role.role_name for role in usersListVm.roles">
+                  {{ user.role_id.role_name }}
+                </span>
+            </td>
+            <td class="text-right">
+              <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons"
+                    shown="usersListVm.inserted == user">
+                <div class="buttons">
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="usersListVm.saveUser(rowform, $index)" class="btn btn-icon"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="usersListVm.cancelUser(rowform, $index)" class="btn btn-icon"><span class="ion-android-close"></span></button>
+                </div>
+              </form>
+              <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-icon" ng-click="rowform.$show(); usersListVm.getRegTerritories(user.region.id); usersListVm.getTerritoryUCs(user.territory.id);"><span class="ion-android-create"></span></button>
+                <button class="btn btn-icon" ng-click="usersListVm.removeUser($index)"><span class="ion-android-delete"></span></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="12" class="text-center">
+              <div st-pagination="users" st-items-by-page="smartTablePageSize" st-displayed-pages="5">
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

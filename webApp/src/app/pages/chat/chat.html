@@ -1,0 +1,72 @@
+<div class="row main-cont-chat" ng-controller="chatCtrl as chatVm">
+  <div class="col-md-4 split left fixes-chat-box">
+
+    <!-- <div class="form-group">
+      <button class="btn btn-primary btn-with-icon" ng-click="chatVm.showMessage()">
+        Send Text SMS
+      </button>
+    </div> -->
+
+    <div class="form-group search-chat">
+      <input class="form-control form-control-rounded" ng-model="search_user" id="search" placeholder="Search" type="text" ng-change="chatVm.searchUser(search_user)">
+    </div>
+    <div class="chat-list-scroll" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
+      <div class="form-group online-status" ng-repeat="user in chatVm.filtered_users">
+        <a href ng-click="chatVm.selectUser(user)">
+          <div class="container user-item" id="{{user.user_id}}">
+            <div class="chat-profile-img">
+              <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
+            </div>
+            <div class="contact-chat-left">
+              <h2> {{user.first_name}} {{user.first_name}}</h2>
+              <p>{{user.role_id.role_name}}</p>
+              <p class="date">5 min</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 split right  fixes-chat-box-right">
+    <div id="chat-history " class="chat-message-scroll online-status" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
+      <div class="chat_history" ng-repeat="chat in chatVm.chat_history">
+        <div ng-if="current_user.user_id == chat.author.id" class="container">
+          <div class="chat-profile-img" >
+            <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
+            <h2>{{chat.time | date: "h:mm a" }}</h2>
+          </div>
+          <div class="contact-chat-left">
+            <p>
+              {{chat.text}}
+            </p>
+          </div>
+        </div>
+
+        <div ng-if="current_user.user_id != chat.author.id" class="container">
+          <div class="chat-profile-img right">
+            <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
+            <h2> {{chat.time | date: "h:mm a" }}</h2>
+          </div>
+          <div class="contact-chat-right">
+            <p>
+              {{chat.text}}
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <form ng-submit="chatVm.sendMessage()">
+      <div>
+        <textarea placeholder="Text to be sent" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="chatVm.message">
+        </textarea>
+        <button type="submit" class="btn btn-success btn-icon">
+          <i class="ion-android-checkmark-circle"></i>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

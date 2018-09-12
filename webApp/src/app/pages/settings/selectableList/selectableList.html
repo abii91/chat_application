@@ -1,0 +1,46 @@
+<table class="table" st-table="records" st-safe-src="recordList">
+  <thead>
+  <tr class="sortable">
+    <th></th>
+    <th>id</th>
+    <th ng-if="module != 'Users'" st-sort="name">Name</th>
+    <th ng-if="module == 'Users'" st-sort="name">First name</th>
+    <th ng-if="module == 'Users'" st-sort="name">Last name</th>
+    <th ng-if="module == 'Users'" st-sort="name">Email</th>
+  </tr>
+  <tr>
+    <th>
+    </th>
+    <th></th>
+    <th ng-if="module != 'Users'"><input st-search="name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+    </th>
+    <th ng-if="module == 'Users'"><input st-search="first_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+    </th>
+    <th ng-if="module == 'Users'"><input st-search="last_name" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+    </th>
+    <th ng-if="module == 'Users'"><input st-search="email" placeholder="Search" class="input-sm form-control search-input" type="search"/>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="record in records">
+      <td><input type="checkbox" ng-model="record.selected"></td>
+      <td>
+          <span>
+            {{ $index + 1 }}
+          </span>
+      </td>
+      <td ng-if="module != 'Users'">{{record.name}}</td>
+      <td ng-if="module == 'Users'">{{record.first_name}}</td>
+      <td ng-if="module == 'Users'">{{record.last_name}}</td>
+      <td ng-if="module == 'Users'">{{record.email}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+  <!-- <tr>
+    <td colspan="8" class="text-center">
+      <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+    </td>
+  </tr> -->
+  </tfoot>
+</table>
