@@ -15,6 +15,8 @@
 2) run => npm install
 3) run => node app.js
 
+The path where data is being stored in file is => server/.tmp/fileBaseData.db
+
 ## Running web app
 
 1) cd webApp
