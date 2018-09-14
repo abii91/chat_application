@@ -9,9 +9,10 @@
   angular.module('BlurAdmin.pages.myGroups')
   .controller('myGroupsCtrl', myGroupsCtrl);
 
-  function myGroupsCtrl($scope, generalFactory, channelsService) {
+  function myGroupsCtrl($scope, generalFactory, generalHelper, channelsService) {
     $scope.selectedGroup = null;
-    generalFactory.request("groups")
+    var current_user = generalHelper.getCurrentUser();
+    generalFactory.request("groups/getUserGroups?user_id=" + current_user.id)
     .then(function(response){
       if(response.code == 'OK'){
         $scope.rowList = response.data;
@@ -21,7 +22,13 @@
 
     $scope.selectGroup = function(group) {
       $scope.selectedGroup = group;
-      channelsService.getGroupChannels($scope, $scope.selectedGroup.id);
+      generalFactory.request("channels/getUserChannels?user_id=" + current_user.id + "&group_id=" + $scope.selectedGroup.id)
+      .then(function(response){
+        if(response.code == 'OK'){
+          $scope.groupChannelList = response.data;
+          $scope.channels = [].concat($scope.groupChannelList);
+        }
+      });
     };
 
   }

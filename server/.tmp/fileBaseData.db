@@ -40,15 +40,15 @@
         "id": 2
       },
       {
-        "first_name": "ibtesam",
-        "last_name": "latif",
+        "first_name": "sam",
+        "last_name": "test",
         "user_name": "sam",
         "password": "$argon2i$v=19$m=4096,t=3,p=1$Rt0p84LHeWbZkoWoSUN0AA$lIMigRyorIvGx+H+XbLrDFV15igyMAwY07kT0G8hG34",
-        "email": "ibtesamlatif1@gmail.com",
+        "email": "sam@yahoo.com",
         "activated": true,
         "role_id": 3,
         "createdAt": "2018-09-11T20:16:48.198Z",
-        "updatedAt": "2018-09-12T11:38:41.686Z",
+        "updatedAt": "2018-09-14T14:26:37.901Z",
         "id": 3
       },
       {
@@ -136,6 +136,13 @@
         "createdAt": "2018-09-12T13:16:10.501Z",
         "updatedAt": "2018-09-12T13:16:10.501Z",
         "id": 5
+      },
+      {
+        "user_id": 5,
+        "channel": 4,
+        "createdAt": "2018-09-14T14:04:06.153Z",
+        "updatedAt": "2018-09-14T14:04:06.153Z",
+        "id": 7
       }
     ]
   },
@@ -276,13 +283,13 @@
       "id": 5
     },
     "channels": {
-      "id": 10
+      "id": 12
     },
     "groups": {
-      "id": 5
+      "id": 8
     },
     "channelusers": {
-      "id": 5
+      "id": 7
     }
   }
 }

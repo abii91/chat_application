@@ -143,6 +143,15 @@
 
         };
 
+
+        $scope.cancelGroup = function(rowform, index){
+          if(null == $scope.groups[index].id)
+            $scope.groups.splice(index, 1);
+
+          rowform.$cancel();
+        };
+
+
         $scope.$on('$destroy', function() {
             $("#obtech_danger_alert").hide();
             $("#obtech_success_alert").hide();

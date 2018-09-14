@@ -40,7 +40,7 @@
                     shown="inserted == group">
                 <div class="buttons">
                 <button ng-disabled="invalidGroupName" type="submit" ng-disabled="rowform.$waiting" ng-click="saveGroup(rowform.$data, $index)" class="btn btn-icon"><span class="glyphicon glyphicon-ok"></span></button>
-                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-icon"><span class="ion-android-close"></span></button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="cancelGroup(rowform, $index)" class="btn btn-icon"><span class="ion-android-close"></span></button>
                 </div>
               </form>
               <div class="buttons" ng-show="!rowform.$visible">

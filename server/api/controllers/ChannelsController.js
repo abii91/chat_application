@@ -53,6 +53,27 @@ module.exports = {
 			res.ok(result);
 		})
 		.catch(res.serverError);
-	}
+	},
+
+	getUserChannels: function(req, res){
+		ChannelUsers.find({user_id: req.param("user_id")})
+		.then(function(channel_users){
+			var channel_ids = [];
+			channel_users.forEach(function(channel_user){
+				channel_ids.push(channel_user.channel);
+			});
+
+			Channels.find({id: channel_ids, group_id: req.param("group_id")})
+			.then(function(channels){
+				res.ok(channels);
+			})
+			.catch(function(err){
+				res.serverError;
+			});
+		})
+		.catch(function(err){
+			res.serverError;
+		});
+	},
 
 };

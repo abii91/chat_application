@@ -116,7 +116,7 @@
     $scope.removeUCs = function () {
       var user_ids = [];
 
-      generalHelper.showConfirmAlert("Are you sure you want to remove these union councils?", function(){
+      generalHelper.showConfirmAlert("Are you sure you want to remove these users?", function(){
         $scope.UCs.forEach(function(uc, index){
           if(uc.selected){
             user_ids.push(uc.id);
@@ -135,6 +135,13 @@
         });
       });
 
+    };
+
+    $scope.cancelChannel = function(rowform, index){
+      if(null == $scope.channels[index].id)
+        $scope.channels.splice(index, 1);
+
+      rowform.$cancel();
     };
 
     $scope.$on('$destroy', function() {

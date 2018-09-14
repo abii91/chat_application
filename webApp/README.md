@@ -1,4 +1,3 @@
-# Admin panel front-end framework For Monsanto
 <br />
 
 ### Project Structure

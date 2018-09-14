@@ -53,4 +53,16 @@ module.exports.routes = {
     action: 'removeChannelUsers'
   },
 
+  'get /channels/getUserChannels': {
+    controller: 'ChannelsController',
+    action: 'getUserChannels'
+  },
+
+  // Group routes
+
+  'get /groups/getUserGroups': {
+    controller: 'GroupsController',
+    action: 'getUserGroups'
+  },
+
 };
