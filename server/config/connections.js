@@ -25,4 +25,21 @@ module.exports.connections = {
       adapter: 'sails-disk'
     },
 
+    /***************************************************************************
+    *                                                                          *
+    * MongoDB is the leading NoSQL database.                                   *
+    * http://en.wikipedia.org/wiki/MongoDB                                     *
+    *                                                                          *
+    * Run: npm install sails-mongo                                             *
+    *                                                                          *
+    ***************************************************************************/
+    LocalMongodbServer: {
+      adapter: 'sails-mongo',
+      host: 'localhost',
+      port: 27017,
+      user: 'admin',
+      password: 'admin123',
+      database: 'chatApp'
+    },
+
 };
