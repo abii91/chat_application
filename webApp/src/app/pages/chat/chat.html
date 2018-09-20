@@ -7,7 +7,7 @@
     <div class="chat-list-scroll" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
       <div class="form-group online-status" ng-repeat="user in chatVm.filtered_users">
         <a href ng-click="chatVm.selectUser(user)">
-          <div class="container user-item" id="{{user.user_id}}">
+          <div class="container user-item" id="{{user.id}}">
             <div class="chat-profile-img">
               <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
             </div>
@@ -25,10 +25,10 @@
   <div class="col-md-8 split right  fixes-chat-box-right">
     <div id="chat-history " class="chat-message-scroll online-status" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
       <div class="chat_history" ng-repeat="chat in chatVm.chat_history">
-        <div ng-if="current_user.user_id == chat.author.id" class="container">
+        <div ng-if="chatVm.current_user.id == chat.sender.id" class="container">
           <div class="chat-profile-img" >
             <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
-            <h2>{{chat.time | date: "h:mm a" }}</h2>
+            <h2>{{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-left">
             <p>
@@ -37,10 +37,10 @@
           </div>
         </div>
 
-        <div ng-if="current_user.user_id != chat.author.id" class="container">
+        <div ng-if="chatVm.current_user.id != chat.sender.id" class="container">
           <div class="chat-profile-img right">
             <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
-            <h2> {{chat.time | date: "h:mm a" }}</h2>
+            <h2> {{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-right">
             <p>

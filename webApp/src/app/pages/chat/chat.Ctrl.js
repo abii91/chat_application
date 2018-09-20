@@ -15,7 +15,7 @@
     var vm = this;
 
     vm.selected_user;
-    vm.current_user = localStorage.getObject('dataUser');
+    vm.current_user = generalHelper.getCurrentUser();
 
     chatFactory.getChatUsers()
     .then(function(users){

@@ -29,6 +29,11 @@ module.exports.routes = {
     action: 'getUsers'
   },
 
+  'get /getChatUsers': {
+    controller: 'UsersController',
+    action: 'getChatUsers'
+  },
+
 
   // Channel routes
 
@@ -77,6 +82,20 @@ module.exports.routes = {
   'get /groups/getUserGroups': {
     controller: 'GroupsController',
     action: 'getUserGroups'
+  },
+
+
+  // Chat routes
+
+  'post /chat/sendChat': {
+    controller: 'ChathistoryController',
+    action: 'sendChat'
+  },
+
+
+  'post /chat/getUserChat': {
+    controller: 'ChathistoryController',
+    action: 'getUserChat'
   },
 
 };
