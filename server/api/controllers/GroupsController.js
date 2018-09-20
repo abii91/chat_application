@@ -7,7 +7,7 @@
 
 module.exports = {
 	getUserGroups: function(req, res){
-		ChannelUsers.find({user_id: req.param("user_id")})
+		ChannelUsers.find({user_id: Number(req.param("user_id"))})
 		.populate("channel")
 		.then(function(channel_users){
 			var group_ids = [];

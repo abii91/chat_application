@@ -18,5 +18,16 @@ module.exports = {
       type: "string",
       size: 255
     }
+  },
+  beforeCreate: function (values, next) {
+
+    EntityStore.findOne({table_name: "groups"})
+    .then(function(entitystore){
+      values.id = entitystore.last_value;
+      entitystore.last_value++;
+      entitystore.save();
+      next();
+    })
+
   }
 };

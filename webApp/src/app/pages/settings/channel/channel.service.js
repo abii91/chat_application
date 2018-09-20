@@ -25,7 +25,7 @@
     function getGroupChannels(parentScope, group) {
       var url = "channels";
       if(group > 0){
-        url += "?group_id="+group;
+        url = "getGroupChannels?group_id="+group;
       }
       generalFactory.request(url)
       .then(function(response){

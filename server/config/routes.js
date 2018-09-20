@@ -21,7 +21,21 @@ module.exports.routes = {
   },
 
 
+
+  // Users routes
+
+  'get /users': {
+    controller: 'UsersController',
+    action: 'getUsers'
+  },
+
+
   // Channel routes
+
+  'get /getGroupChannels': {
+    controller: 'ChannelsController',
+    action: 'getGroupChannels'
+  },
 
   'get /channels/getUnassignedChannels': {
     controller: 'ChannelsController',

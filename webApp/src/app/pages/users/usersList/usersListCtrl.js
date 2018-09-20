@@ -55,7 +55,7 @@
         generalFactory
         .request(url, 'DELETE', null, "status")
         .then(function(response_status){
-          if(response_status == 204){
+          if(response_status == 200){
             $scope.rowList.splice(index, 1);
           }
         });
@@ -78,13 +78,11 @@
     vm.saveUser = function(rowform, index) {
       usersListService.saveUser(rowform, index, $scope.users, function(response){
         var response_data = response.data.data;
-
         if(response.data.code == 'CREATED' || response.data.code == 'OK'){
+          $scope.users[index] = response_data;
           if(response_data.id){
             $scope.users[index].id = response_data.id;
           }
-          // $scope.users[index].role_id = vm.getRole(response_data.role_id);
-          $scope.users[index].role_id = response_data.role_id;
           rowform.$submit();
           generalHelper
             .showSuccessMessage("New user has been saved successfully.");
