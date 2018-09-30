@@ -32,5 +32,8 @@ module.exports.policies = {
     '*': true
   },
 
+  PublicController: {
+    '*': []
+  }
 
 };

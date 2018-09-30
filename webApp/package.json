@@ -45,5 +45,8 @@
   },
   "scripts": {
     "postinstall": "bower install"
+  },
+  "dependencies": {
+    "socket.io-client": "^2.1.1"
   }
 }

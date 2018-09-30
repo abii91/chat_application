@@ -41,4 +41,25 @@ module.exports = {
 		})
 	},
 
+  uploadPhoto: function(req, res){
+    var chat_id = req.param("id");
+    var path = "/public/history";
+
+    req.file('file').upload( {
+      dirname: '../..' + path
+    }, function (err, uploadedFiles){
+      if (err) {
+        return res.serverError(err);
+      }
+      var uploadedFile = uploadedFiles[0].fd.substring(5);
+      Chathistory.update(chat_id, { file: uploadedFile })
+      .then(function(chats){
+        res.ok(chats[0]);
+      })
+      .catch(function(err){
+        res.serverError;
+      })
+    });
+  },
+
 };

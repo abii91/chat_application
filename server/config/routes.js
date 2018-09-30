@@ -24,6 +24,11 @@ module.exports.routes = {
 
   // Users routes
 
+  'post /users/:id/uploadPhoto' : {
+    controller: 'UsersController',
+    action: 'uploadPhoto'
+  },
+
   'get /users': {
     controller: 'UsersController',
     action: 'getUsers'
@@ -96,6 +101,18 @@ module.exports.routes = {
   'post /chat/getUserChat': {
     controller: 'ChathistoryController',
     action: 'getUserChat'
+  },
+
+
+  'post /chat/:id/uploadPhoto': {
+    controller: 'ChathistoryController',
+    action: 'uploadPhoto'
+  },
+
+  /* Public route for public directory listening */
+  'get /public/*': {
+    controller: 'PublicController',
+    action: 'index'
   },
 
 };

@@ -17,6 +17,9 @@ module.exports = {
     text: {
       type: "text"
     },
+    file: {
+      type: "text"
+    },
     sender: {
       model: "Users",
     },

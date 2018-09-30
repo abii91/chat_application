@@ -29,6 +29,9 @@ module.exports = {
       type: "string",
       size: 255,
     },
+    profile: {
+      type: "text"
+    },
     password: {
       type: "text"
     },

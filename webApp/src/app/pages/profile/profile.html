@@ -1,0 +1,52 @@
+<div ng-controller="ProfilePageCtrl as profileVm">
+  <div ba-panel ba-panel-class="profile-page">
+    <div class="panel-content">
+
+      <h3 class="with-line">General Information</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row clearfix">
+            <label for="inputFirstName" class="col-sm-3 control-label">Picture</label>
+
+            <div class="col-sm-9">
+              <div class="userpic">
+                <div class="userpic-wrapper">
+                  <img ng-src="{{ profileVm.picture }}" ng-click="profileVm.uploadPicture()">
+                </div>
+                <i class="ion-ios-close-outline" ng-click="profileVm.removePicture()" ng-if="!profileVm.noPicture"></i>
+                <a href class="change-userpic" ng-click="profileVm.uploadPicture()">Change Profile Picture</a>
+                <input type="file" id="uploadFile" ng-show="false" file-upload="myPicture" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row clearfix">
+            <label for="inputFirstName" class="col-sm-3 control-label">First Name</label>
+
+            <div class="col-sm-9">
+              <input type="text" ng-model="profileVm.current_user.first_name" class="form-control" id="inputFirstName" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row clearfix">
+            <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
+
+            <div class="col-sm-9">
+              <input type="text" ng-model="profileVm.current_user.last_name" class="form-control" id="inputLastName" placeholder="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="btn btn-primary btn-with-icon save-profile" ng-click="profileVm.updateProfile()">
+        <i class="ion-android-checkmark-circle"></i>Update Profile
+      </button>
+    </div>
+  </div>
+</div>

@@ -10,19 +10,19 @@
       .controller('usersCtrl', usersCtrl);
 
   /** @ngInject */
-  function usersCtrl($scope, usersService, config, OBTechRoles) {
+  function usersCtrl($scope, usersService, config, ChatRoles) {
     $scope.tab = "SA"
-    usersService.getUsers($scope, OBTechRoles.super_admin, $scope.tab);
+    usersService.getUsers($scope, ChatRoles.super_admin, $scope.tab);
 
     $scope.selectTab = function(tab){
       if(tab == "SA"){
-        usersService.getUsers($scope, OBTechRoles.super_admin, tab);
+        usersService.getUsers($scope, ChatRoles.super_admin, tab);
       }
       if(tab == "GA"){
-        usersService.getUsers($scope, OBTechRoles.group_admin, tab);
+        usersService.getUsers($scope, ChatRoles.group_admin, tab);
       }
       if(tab == "users"){
-        usersService.getUsers($scope, OBTechRoles.users, tab);
+        usersService.getUsers($scope, ChatRoles.users, tab);
       }
     }
   }

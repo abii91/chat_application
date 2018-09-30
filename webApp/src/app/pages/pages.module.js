@@ -11,6 +11,7 @@
       'BlurAdmin.pages.main',
       'BlurAdmin.pages.myGroups',
       'BlurAdmin.pages.users',
+      'BlurAdmin.pages.profile',
       'BlurAdmin.pages.settings',
       'BlurAdmin.pages.chat',
       'BlurAdmin.pages.authSignIn',

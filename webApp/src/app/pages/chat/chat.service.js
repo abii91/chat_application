@@ -18,6 +18,8 @@
     return service;
 
     function sendSMS(msg_data){
+      var defer = $q.defer();
+
       var msg = {
         text: msg_data.message,
         recipient: msg_data.selected_user.id,
@@ -26,10 +28,13 @@
       generalFactory.request("chat/sendChat", "POST", msg)
       .then(function(){
         msg_data.message = "";
+        defer.resolve(msg_data);
       })
       .catch(function(err){
-        res.serverError;
+        defer.reject(err);
       });
+
+      return defer.promise;
     }
 
     function showUserChat(chatVm, current_user){
@@ -37,8 +42,7 @@
 
       generalFactory.request("chat/getUserChat", "POST", {recipient: chatVm.selected_user.id})
       .then(function(response){
-        chatVm.chat_history = response.data;
-        defer.resolve(chatVm.chat_history);
+        defer.resolve(response.data);
       })
       .catch(function(err){
         defer.reject(err);

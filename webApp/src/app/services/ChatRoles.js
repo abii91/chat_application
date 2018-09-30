@@ -1,15 +1,11 @@
-/**
- * @author ibtesam.latif
- * Created on 05.01.2018.
- */
 
 (function () {
   'use strict';
 
   angular.module('BlurAdmin.services')
-    .service('OBTechRoles', OBTechRoles);
+    .service('ChatRoles', ChatRoles);
 
-    function OBTechRoles(){
+    function ChatRoles(){
         return{
             super_admin: 1,
             group_admin: 2,

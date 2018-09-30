@@ -18,6 +18,7 @@
       if(!validateUser(user, index, scopeUsers))
         return;
 
+      user.profile = "/public/profile/user.png";
       if(user.password == "")
         delete user["password"];
 

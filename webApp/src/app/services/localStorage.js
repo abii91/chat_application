@@ -1,7 +1,3 @@
-/**
- * *
- * created on 14.10.2017
- */
 
 (function() {
   'use strict';
