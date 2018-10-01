@@ -26,5 +26,16 @@ module.exports = {
       via: "user_channels",
       through: "channelusers"
     },
+  },
+  beforeCreate: function (values, next) {
+
+    EntityStore.findOne({table_name: "channels"})
+    .then(function(entitystore){
+      values.id = entitystore.last_value;
+      entitystore.last_value++;
+      entitystore.save();
+      next();
+    })
+
   }
 };

@@ -145,8 +145,8 @@
     };
 
     $scope.$on('$destroy', function() {
-      $("#obtech_danger_alert").hide();
-      $("#obtech_success_alert").hide();
+      $("#chat_danger_alert").hide();
+      $("#chat_success_alert").hide();
     });
 
     editableOptions.theme = 'bs3';

@@ -21,7 +21,31 @@ module.exports.routes = {
   },
 
 
+
+  // Users routes
+
+  'post /users/:id/uploadPhoto' : {
+    controller: 'UsersController',
+    action: 'uploadPhoto'
+  },
+
+  'get /users': {
+    controller: 'UsersController',
+    action: 'getUsers'
+  },
+
+  'get /getChatUsers': {
+    controller: 'UsersController',
+    action: 'getChatUsers'
+  },
+
+
   // Channel routes
+
+  'get /getGroupChannels': {
+    controller: 'ChannelsController',
+    action: 'getGroupChannels'
+  },
 
   'get /channels/getUnassignedChannels': {
     controller: 'ChannelsController',
@@ -63,6 +87,32 @@ module.exports.routes = {
   'get /groups/getUserGroups': {
     controller: 'GroupsController',
     action: 'getUserGroups'
+  },
+
+
+  // Chat routes
+
+  'post /chat/sendChat': {
+    controller: 'ChathistoryController',
+    action: 'sendChat'
+  },
+
+
+  'post /chat/getUserChat': {
+    controller: 'ChathistoryController',
+    action: 'getUserChat'
+  },
+
+
+  'post /chat/:id/uploadPhoto': {
+    controller: 'ChathistoryController',
+    action: 'uploadPhoto'
+  },
+
+  /* Public route for public directory listening */
+  'get /public/*': {
+    controller: 'PublicController',
+    action: 'index'
   },
 
 };

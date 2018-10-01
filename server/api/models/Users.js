@@ -9,9 +9,8 @@ module.exports = {
   attributes: {
     id: {
       type: "integer",
-      autoIncrement: true,
       primaryKey: true,
-      unique: true
+      unique: true,
     },
     first_name: {
       type: "string",
@@ -29,6 +28,9 @@ module.exports = {
     email: {
       type: "string",
       size: 255,
+    },
+    profile: {
+      type: "text"
     },
     password: {
       type: "text"
@@ -70,9 +72,16 @@ module.exports = {
     });
   },
   beforeCreate: function (values, next) {
-    SecurityService.hashPassword(values)
-    .then(function(){ next(); })
-    .catch(function(){ next(); });
+
+    EntityStore.findOne({table_name: "users"})
+    .then(function(entitystore){
+      values.id = entitystore.last_value;
+      entitystore.last_value++;
+      entitystore.save();
+      SecurityService.hashPassword(values)
+      .then(function(){ next(); })
+      .catch(function(){ next(); });
+    })
   }
 
 };

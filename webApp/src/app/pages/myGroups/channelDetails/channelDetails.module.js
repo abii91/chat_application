@@ -13,7 +13,7 @@
       title: 'Channel details',
       data: {
         permissions: {
-          only: ['users']
+          only: ['super_admin', 'group_admin', 'users']
         }
       },
       authenticate: true

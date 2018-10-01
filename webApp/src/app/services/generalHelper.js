@@ -1,7 +1,3 @@
-/**
-* @author ibtesam.latif
-* created on 12.04.2017
-*/
 
 (function () {
   'use strict';
@@ -47,6 +43,7 @@
       getBooleanArray: getBooleanArray,
       showBoolean: showBoolean,
       getCurrentUser: getCurrentUser,
+      setCurrentUser: setCurrentUser
     };
 
     return service;
@@ -162,6 +159,10 @@
 
     function getCurrentUser(){
       return localStorage.getObject('dataUser');
+    }
+
+    function setCurrentUser(user){
+      localStorage.setObject('dataUser', user);
     }
   }
 

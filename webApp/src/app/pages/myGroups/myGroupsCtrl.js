@@ -1,7 +1,4 @@
-/**
-* *
-* created on 28.10.2017
-*/
+
 
 (function () {
   'use strict';

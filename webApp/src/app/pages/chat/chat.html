@@ -7,9 +7,9 @@
     <div class="chat-list-scroll" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
       <div class="form-group online-status" ng-repeat="user in chatVm.filtered_users">
         <a href ng-click="chatVm.selectUser(user)">
-          <div class="container user-item" id="{{user.user_id}}">
+          <div class="container user-item" id="{{user.id}}">
             <div class="chat-profile-img">
-              <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
+              <img ng-src="{{chatVm.baseUrl}}{{user.profile}}" src="{{chatVm.baseUrl}}{{user.profile}}">
             </div>
             <div class="contact-chat-left">
               <h2> {{user.first_name}} {{user.first_name}}</h2>
@@ -23,29 +23,35 @@
   </div>
 
   <div class="col-md-8 split right  fixes-chat-box-right">
-    <div id="chat-history " class="chat-message-scroll online-status" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
+    <div id="chat-history" class="chat-message-scroll online-status" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight">
       <div class="chat_history" ng-repeat="chat in chatVm.chat_history">
-        <div ng-if="current_user.user_id == chat.author.id" class="container">
+        <div ng-if="chatVm.current_user.id == chat.sender.id" class="container">
           <div class="chat-profile-img" >
-            <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
-            <h2>{{chat.time | date: "h:mm a" }}</h2>
+            <img ng-src="{{chatVm.baseUrl}}{{chatVm.current_user.profile}}" src="{{chatVm.baseUrl}}{{chatVm.current_user.profile}}">
+            <h2>{{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-left">
-            <p>
+            <p ng-if="chat.text && chat.text != ''">
               {{chat.text}}
             </p>
+            <div ng-if="chat.file != ''">
+              <img width="250px" ng-src="{{chatVm.baseUrl}}{{chat.file}}" src="{{chatVm.baseUrl}}{{chat.file}}">
+            </div>
           </div>
         </div>
 
-        <div ng-if="current_user.user_id != chat.author.id" class="container">
+        <div ng-if="chatVm.current_user.id != chat.sender.id" class="container">
           <div class="chat-profile-img right">
-            <img ng-src="assets/img/app/profile/user.png" src="assets/img/app/profile/user.png">
-            <h2> {{chat.time | date: "h:mm a" }}</h2>
+            <img ng-src="{{chatVm.baseUrl}}{{chatVm.selected_user.profile}}" src="{{chatVm.baseUrl}}{{chatVm.selected_user.profile}}">
+            <h2> {{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-right">
-            <p>
+            <p ng-if="chat.text && chat.text != ''">
               {{chat.text}}
             </p>
+            <div ng-if="chat.file != ''">
+              <img width="250px" ng-src="{{chatVm.baseUrl}}{{chat.file}}" src="{{chatVm.baseUrl}}{{chat.file}}">
+            </div>
           </div>
 
         </div>
@@ -56,6 +62,14 @@
       <div>
         <textarea placeholder="Text to be sent" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="chatVm.message">
         </textarea>
+        <div>
+          <div class="userpic-wrapper">
+            <img ng-src="{{ chatVm.picture }}" ng-click="chatVm.uploadPicture()">
+          </div>
+          <i class="ion-ios-close-outline" ng-click="chatVm.removePicture()" ng-if="!chatVm.noPicture"></i>
+          <a href class="change-userpic" ng-click="chatVm.uploadPicture()">Send picture</a>
+          <input type="file" id="uploadFile" ng-show="false" file-upload="myPicture" />
+        </div>
         <button type="submit" class="btn btn-success btn-icon">
           <i class="ion-android-checkmark-circle"></i>
         </button>

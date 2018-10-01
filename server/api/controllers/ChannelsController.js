@@ -1,11 +1,19 @@
 /**
- * ChannelsController
- *
- * @description :: Server-side logic for managing channels
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
+* ChannelsController
+*
+* @description :: Server-side logic for managing channels
+* @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+*/
 
 module.exports = {
+	getGroupChannels: function(req, res){
+		Channels.find({group_id: Number(req.param("group_id"))})
+		.then(function(result){
+			res.ok(result);
+		})
+		.catch(res.serverError);
+	},
+
 	getUnassignedChannels: function(req, res){
 		Channels.find({group_id: null})
 		.then(function(result){
@@ -15,7 +23,7 @@ module.exports = {
 	},
 
 	assignChannels: function(req, res){
-		Channels.update({id: req.param("channels")}, {group_id: req.param("group")})
+		Channels.update({id: req.param("channels")}, {group_id: Number(req.param("group"))})
 		.then(function(result){
 			res.ok(result);
 		})
@@ -31,7 +39,7 @@ module.exports = {
 	},
 
 	getChannelUsers: function(req, res){
-		Channels.findOne({id: req.param("channel")})
+		Channels.findOne({id: Number(req.param("channel"))})
 		.populate("channel_users")
 		.then(function(result){
 			res.ok(result.channel_users);
@@ -48,7 +56,7 @@ module.exports = {
 	},
 
 	removeChannelUsers: function(req, res){
-		ChannelUsers.destroy({user_id: req.param("users"), channel: req.param("channel")})
+		ChannelUsers.destroy({user_id: req.param("users"), channel: Number(req.param("channel"))})
 		.then(function(result){
 			res.ok(result);
 		})
@@ -56,24 +64,36 @@ module.exports = {
 	},
 
 	getUserChannels: function(req, res){
-		ChannelUsers.find({user_id: req.param("user_id")})
-		.then(function(channel_users){
-			var channel_ids = [];
-			channel_users.forEach(function(channel_user){
-				channel_ids.push(channel_user.channel);
-			});
+		if(req.user.role_id.role_name == "users"){
 
-			Channels.find({id: channel_ids, group_id: req.param("group_id")})
+			ChannelUsers.find({user_id: Number(req.param("user_id"))})
+			.then(function(channel_users){
+				var channel_ids = [];
+				channel_users.forEach(function(channel_user){
+					channel_ids.push(channel_user.channel);
+				});
+
+				Channels.find({id: channel_ids, group_id: Number(req.param("group_id"))})
+				.then(function(channels){
+					res.ok(channels);
+				})
+				.catch(function(err){
+					res.serverError;
+				});
+			})
+			.catch(function(err){
+				res.serverError;
+			});
+		}
+		else{
+			Channels.find()
 			.then(function(channels){
 				res.ok(channels);
 			})
 			.catch(function(err){
 				res.serverError;
 			});
-		})
-		.catch(function(err){
-			res.serverError;
-		});
+		}
 	},
 
 };

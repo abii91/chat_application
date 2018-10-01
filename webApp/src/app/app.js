@@ -14,10 +14,12 @@ angular.module('BlurAdmin', [
   'ui.slimscroll',
   'ngJsTree',
   'angular-progress-button-styles',
+  'btford.socket-io',
 
   'BlurAdmin.theme',
   'BlurAdmin.pages',
   'BlurAdmin.services',
+  'BlurAdmin.dirrectives',
   'ct.ui.router.extras.core'
 ])
 .run(function (PermRoleStore, localStorage, config) {
