@@ -6,37 +6,27 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.chat')
-  .controller('chatCtrl', chatCtrl);
+  angular.module('BlurAdmin.pages.channelDetails')
+  .controller('channelDetailsCtrl', channelDetailsCtrl);
 
 
-  function chatCtrl($scope, $state, $http, $filter, config, generalHelper, localStorage, chatService, chatFactory, fileUpload) {
+  function channelDetailsCtrl($scope, $state, $stateParams, $http, $filter, config, generalHelper, localStorage, chatService, chatFactory, fileUpload) {
 
     var vm = this;
     var socket = io.connect('http://localhost:8080');
     vm.baseUrl = config.baseUrl;
+    vm.selected_channel = $stateParams.id;
+
+    showChat();
 
     socket.on('messageRec', function(data){
       showChat();
     });
 
-    vm.selected_user;
     vm.current_user = generalHelper.getCurrentUser();
-
-    chatFactory.getChatUsers()
-    .then(function(users){
-      vm.users = users;
-      vm.filtered_users = vm.users;
-    })
-    .catch(function(err){
-      generalHelper.showGeneralError();
-    });
 
     vm.sendMessage = function(){
       vm.file = $scope.myPicture;
-      console.log("myPicture");
-      console.log($scope.myPicture);
-      console.log($scope);
       chatService.sendSMS(vm)
       .then(function(msg_data){
         if(null != vm.file){
@@ -59,11 +49,6 @@
       });
     }
 
-    vm.selectUser = function(user) {
-      vm.selected_user = user;
-      showChat();
-    }
-
     vm.removePicture = function () {
       vm.picture = $filter('appImage')('theme/no-photo.png');
       vm.noPicture = true;
@@ -75,7 +60,9 @@
     };
 
     function showChat() {
-      if(null != vm.selected_user){
+      console.log("showChat");
+      console.log(vm.selected_channel);
+      if(vm.selected_channel > 0){
         var current_user = localStorage.getObject('dataUser');
         chatService.showUserChat(vm, current_user)
         .then(function(chat_history) {

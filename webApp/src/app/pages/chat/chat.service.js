@@ -22,13 +22,19 @@
 
       var msg = {
         text: msg_data.message,
-        recipient: msg_data.selected_user.id,
       };
 
+      if(msg_data.selected_user){
+        msg.recipient = msg_data.selected_user.id
+      }
+      else if(msg_data.selected_channel){
+        msg.channel = msg_data.selected_channel;
+      }
+
       generalFactory.request("chat/sendChat", "POST", msg)
-      .then(function(){
+      .then(function(response){
         msg_data.message = "";
-        defer.resolve(msg_data);
+        defer.resolve(response.data);
       })
       .catch(function(err){
         defer.reject(err);
@@ -39,8 +45,15 @@
 
     function showUserChat(chatVm, current_user){
       var defer = $q.defer();
+      var data;
+      if(chatVm.selected_user){
+        data = {recipient: chatVm.selected_user.id};
+      }
+      else if(chatVm.selected_channel){
+        data = {channel: chatVm.selected_channel};
+      }
 
-      generalFactory.request("chat/getUserChat", "POST", {recipient: chatVm.selected_user.id})
+      generalFactory.request("chat/getUserChat", "POST", data)
       .then(function(response){
         defer.resolve(response.data);
       })

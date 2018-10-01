@@ -19,21 +19,34 @@ module.exports = {
 	},
 
 	getUserChat: function(req, res){
-		Chathistory.find({
-			or: [
-				{
-					sender: req.user.id,
-					recipient: req.param("recipient")
-				},
-				{
-					recipient: req.user.id,
-					sender: req.param("recipient")
-				}
-			]
-		})
+		var criteria;
+		if(req.param("channel") > 0){
+			criteria = {
+				channel: Number(req.param("channel"))
+			}
+		}
+		else{
+			criteria = {
+				or: [
+					{
+						sender: req.user.id,
+						recipient: Number(req.param("recipient"))
+					},
+					{
+						recipient: req.user.id,
+						sender: Number(req.param("recipient"))
+					}
+				]
+			};
+		}
+		console.log("criteria");
+		console.log(criteria);
+		Chathistory.find(criteria)
 		.populate("sender")
 		.populate("recipient")
 		.then(function(chats){
+			console.log("chats");
+			console.log(chats);
 			res.ok(chats);
 		})
 		.catch(function(err){
@@ -42,8 +55,8 @@ module.exports = {
 	},
 
   uploadPhoto: function(req, res){
-    var chat_id = req.param("id");
-    var path = "/public/history";
+		var chat_id = req.param("id");
+		var path = "/public/history";
 
     req.file('file').upload( {
       dirname: '../..' + path
@@ -52,9 +65,9 @@ module.exports = {
         return res.serverError(err);
       }
       var uploadedFile = uploadedFiles[0].fd.substring(5);
-      Chathistory.update(chat_id, { file: uploadedFile })
+			Chathistory.update( { id: chat_id }, { file: uploadedFile })
       .then(function(chats){
-        res.ok(chats[0]);
+				res.ok(chats[0]);
       })
       .catch(function(err){
         res.serverError;

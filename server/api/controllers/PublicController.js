@@ -11,8 +11,7 @@ module.exports = {
   index: function(req, res) {
     var pub_files = [];
     var param_file = req.route.params[0];
-    console.log("param_file");
-    console.log(param_file);
+
     // sails.log(req.route);
     // return res.ok();
 
@@ -33,11 +32,7 @@ module.exports = {
     }
     else {
       var file_path = 'public/' + param_file;
-      console.log("file_path");
-      console.log(file_path);
       fs.exists(file_path, function(file_exists){
-        console.log("file_exists");
-        console.log(file_exists);
         if( file_exists === true )
         {
           fs.readFile(file_path, function(err, data){

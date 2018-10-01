@@ -31,9 +31,12 @@
             <h2>{{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-left">
-            <p>
+            <p ng-if="chat.text && chat.text != ''">
               {{chat.text}}
             </p>
+            <div ng-if="chat.file != ''">
+              <img width="250px" ng-src="{{chatVm.baseUrl}}{{chat.file}}" src="{{chatVm.baseUrl}}{{chat.file}}">
+            </div>
           </div>
         </div>
 
@@ -43,9 +46,12 @@
             <h2> {{chat.createdAt | date: "h:mm a" }}</h2>
           </div>
           <div class="contact-chat-right">
-            <p>
+            <p ng-if="chat.text && chat.text != ''">
               {{chat.text}}
             </p>
+            <div ng-if="chat.file != ''">
+              <img width="250px" ng-src="{{chatVm.baseUrl}}{{chat.file}}" src="{{chatVm.baseUrl}}{{chat.file}}">
+            </div>
           </div>
 
         </div>
